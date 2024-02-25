@@ -1,4 +1,4 @@
-# Granblue Fantasy: Relink Slimepede Farm
+# Granblue Fantasy: Relink Farming Script
 Simple AutoHotKey script I made to be used for PS4/PS5 on NOX Player in conjuction with RemotePlay for grinding any of the boss missions from HARD to MANIAC, mainly for Curios but also for mats.
 
 [Nox Player](https://www.bignox.com/)
