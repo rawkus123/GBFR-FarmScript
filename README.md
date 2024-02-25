@@ -2,6 +2,7 @@
 Simple AutoHotKey script I made to be used for PS4/PS5 on NOX Player in conjuction with RemotePlay for grinding any of the boss missions from HARD to MANIAC, mainly for Curios but also for mats.
 
 [Nox Player](https://www.bignox.com/)
+
 [Remote Play](https://play.google.com/store/apps/details?id=psplay.grill.com&hl=en_AU&gl=US)
 
 Written using AutoHotKey V1.1.
