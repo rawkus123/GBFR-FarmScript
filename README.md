@@ -18,7 +18,7 @@ This script was made to be used with any character with the intention of Full As
 
 ## Setup
 - Grab the newest release
-- Extract the files anywhere you'd like on your computer and run the exe.
+- Place the file anywhere you'd like on your computer and run the exe.
 - To setup the boss loop some manual setup is required. Just run over to the quest counter and change the Sort selection to "By Type", goto Boss, select any quest, accept it and then abandon it.
 
 You don't need to have AHK installed if you use this script like this. Should work on any Windows machine.
