@@ -2,6 +2,8 @@
 Simple AutoHotKey script I made to be used for PS4/PS5 on NOX Player in conjuction with RemotePlay for grinding any of the boss missions from HARD to MANIAC, mainly for Curios but also for mats.
 I'm also assuming that you know how to setup Nox Player and install apk's to it. If not there's guides out there to help you throught the process.
 
+I didn't tailor this towards PC as I figured it would be easier just to trainer it instead. This is for the hard yakka Playstation Players, but if you want me to make geared towards PC I can do so.
+
 [Nox Player](https://www.bignox.com/)
 
 [Remote Play](https://play.google.com/store/apps/details?id=psplay.grill.com&hl=en_AU&gl=US)
