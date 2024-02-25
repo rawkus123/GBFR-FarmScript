@@ -34,7 +34,7 @@ ctrl + Q stops and restarts the script
 ## Video example
 Click the image below to be redirected to an example of this working on YouTube.
 
-[![Video Example](https://img.youtube.com/vi/vcAemD-vFag/0.jpg)](https://www.youtube.com/watch?v=vcAemD-vFag "Video Example")
+[![Video Example](https://img.youtube.com/vi/SqQBlNRglC4/0.jpg)](https://youtu.be/SqQBlNRglC4)
 
 ## Some Things to Take away
 I've run this script for 6 hours on Wings of Antiquity (Ancient Dragon). My team can kill this boss in 15 secs, so doing the maths the full loop including boss time,loading times and battle results is roughly 2 mins so thats 30 boss fights
