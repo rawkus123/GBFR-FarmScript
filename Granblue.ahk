@@ -247,7 +247,7 @@ Loop
                             Click, Left, Down
                             Sleep, 200
                             Click, Left, Up
-                            PixelSearch, MenuFoundX1, MenuFoundY1, MenuX1, MenuY1, MenuX2, MenuY2, 0x3BC1D9, 5, Fast RGB
+                            PixelSearch, MenuFoundX1, MenuFoundY1, MenuX1, MenuY1, MenuX2, MenuY2, 0x43C4DF, 5, Fast RGB
                             if (ErrorLevel = 0)
                                 {
                                     Goto FailSafe
