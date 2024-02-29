@@ -154,7 +154,29 @@ Gui, Add, Button, x10 y760 w70 h30 gLookHealthBar, START
 
 Gui, Add, Button, x110 y760 w70 h30 gQuitScript, QUIT
 
+Gui, Add, Button, x210 y760 w70 h30 gOpenInputDialog, Input pixel colour offset
+
 Gui, Show, x%guiX% y39 w910 h800, Quest Selector
+return
+
+; Label for the button
+OpenInputDialog:
+    ; Prompt the user for input
+    InputBox, userInput, Enter Your Text, Please enter some text:
+
+    ; Check if the user pressed Cancel.
+    if (ErrorLevel)
+    {
+        MsgBox, You pressed Cancel.
+    }
+    else
+    {
+        ; Set a variable with the user input
+        global userVariable := userInput + 5
+
+        ; Display the input for demonstration purposes
+        pixelVariable := %userVariable% + 5
+    }
 return
 
 SetLoopTimes:
@@ -247,7 +269,7 @@ Loop
                             Click, Left, Down
                             Sleep, 200
                             Click, Left, Up
-                            PixelSearch, MenuFoundX1, MenuFoundY1, MenuX1, MenuY1, MenuX2, MenuY2, 0x43C4DF, 5, Fast RGB
+                            PixelSearch, MenuFoundX1, MenuFoundY1, MenuX1, MenuY1, MenuX2, MenuY2, 0x43C4DF, %pixelVariable%, Fast RGB
                             if (ErrorLevel = 0)
                                 {
                                     Goto FailSafe
