@@ -5,8 +5,69 @@ CurioCount := 0
 HealthColours := ["0xB4FF7E", "0xB7FB4F", "0xAEFF56"]
 NoColours := ["0x4EFDFF", "0x47e8fe", "0x5dddfa"]
 CurioColours := ["0x36334B", "0x3E3E56"]
+CountDownColorVariable := 0xFFF99C
+MenuColorVariable := 0x41C2DF
+pixelVariable := 20
 
 CurioCoordinates := [{X1: 380, Y1: 356, X2: 436, Y2: 411},{X1: 449, Y1: 356, X2: 504, Y2:411 },{X1: 379, Y1: 285, X2: 434, Y2: 340}]
+filePath := A_ScriptDir . "\\settings.txt"
+
+if (FileExist(filePath))
+{
+    Loop, Read, %filePath%
+{
+    line := A_LoopReadLine  ; Current line content
+    ; Split the line into the variable name and value based on ": "
+    parts := StrSplit(line, ": ")
+
+    if (parts.Length() == 2)
+    {
+        ; Dynamically set the variable based on the line
+        ; The Trim function is used to remove any leading/trailing whitespace from the variable name and value
+        varName := Trim(parts[1])
+        varValue := Trim(parts[2])
+
+        ; Use a switch or if-else structure to assign the values to specific variables
+        if (varName = "MenuX1")
+            MenuX1 := varValue
+        else if (varName = "MenuY1")
+            MenuY1 := varValue
+        else if (varName = "MenuX2")
+            MenuX2 := varValue
+        else if (varName = "MenuY2")
+            MenuY2 := varValue
+        else if (varName = "MenuColorVariable")
+            MenuColorVariable := varValue
+        else if (varName = "HealthColorVariable1")
+            HealthColorVariable1 := varValue
+        else if (varName = "HealthColorVariable2")
+            HealthColorVariable2 := varValue
+        else if (varName = "HealthColorVariable3")
+            HealthColorVariable3 := varValue
+        else if (varName = "HealthBarX1")
+            HealthBarX1 := varValue
+        else if (varName = "HealthBarY2")
+            HealthBarY1 := varValue
+        else if (varName = "HealthBarX2")
+            HealthBarX2 := varValue
+        else if (varName = "HealthBarY1")
+            HealthBarY2 := varValue
+        else if (varName = "CountDownColorVariable")
+            CountDownColorVariable := varValue
+        else if (varName = "BattleResultsX1")
+            BattleResultsX1 := varValue
+        else if (varName = "BattleResultsY2")
+            BattleResultsY1 := varValue
+        else if (varName = "BattleResultsX2")
+            BattleResultsX2 := varValue
+        else if (varName = "BattleResultsY1")
+            BattleResultsY2 := varValue
+
+    }
+}
+}
+
+
 
 ;55 55
 
@@ -33,28 +94,28 @@ WinGetPos, WinX, WinY,, , ahk_id %id%
 WinActivate, ahk_id %id%
 
     ;MainMenu Coordinates
-    MenuX1 := 696
-    MenuY1 := 277
-    MenuX2 := 702
-    MenuY2 := 285
+    ;MenuX1 := 696
+    ;MenuY1 := 277
+    ;MenuX2 := 706
+    ;MenuY2 := 287
 
     ; Set of coordinates (health bar)
-    HealthBarX1 := WinX + 163
-    HealthBarY1 := WinY + 137
-    HealthBarX2 := WinX + 298
-    HealthBarY2 := WinY + 143
+    ;HealthBarX1 := WinX + 163
+    ;HealthBarY1 := WinY + 137
+    ;HealthBarX2 := WinX + 298
+    ;HealthBarY2 := WinY + 143
 
     ; Set of coordinates for Battle Results
-    BattleResultsX1 := WinX + 699
-    BattleResultsY1 := WinY + 267
-    BattleResultsX2 := WinX + 701
-    BattleResultsY2 := WinY + 269
+    ;BattleResultsX1 := WinX + 699
+    ;BattleResultsY1 := WinY + 267
+    ;BattleResultsX2 := WinX + 701
+    ;BattleResultsY2 := WinY + 269
 
     ;Repeat Coordinates
-    RepeatX1 := WinX + 641
-    RepeatY1 := WinY + 327
-    RepeatX2 := WinX + 729
-    RepeatY2 := WinY + 350
+    ;RepeatX1 := WinX + 641
+    ;RepeatY1 := WinY + 327
+    ;RepeatX2 := WinX + 729
+    ;RepeatY2 := WinY + 350
 
     ;Repeat YES/NO
     NoX1 := WinX + 676
@@ -150,13 +211,18 @@ Gui, Add, Button, x700 y720 w200 h30 gSetLoopTimes, Saga Grande: Happily Ever Af
 quests := [{name: "Protect the Rep (Quakadile)", loopTimes: 8}, {name: "Delts of Our Lives (Goblin Warrior)", loopTimes: 9}, {name: "Hide and Chic (Blizzadile)", loopTimes: 10}, {name: "Drumsticks au Griffin (Griffin)", loopTimes: 11}, {name: "Looming Tower, Leering Eye (Nazarbonju)", loopTimes: 12}, {name: "Wings of Antiquity (Ancient Dragon)", loopTimes: 13}, {name: "A Bone to Peak (Scarmiglione)", loopTimes: 14}, {name: "Geomology 102: Volcanic Golems (Rock Golem)", loopTimes: 15}, {name: "No One Likes Leftovers (Tayu'itar)", loopTimes: 16}, {name: "I See a Deathly Vision (Gerasene)", loopTimes: 17}, {name: "The Next Hot Topic (Infernadile)", loopTimes: 18}, {name: "License to Thrill (Furycane)", loopTimes: 19}, {name: "Saga Illustrated (Managarmr)", loopTimes: 20}, {name: "General Investigation: Gallanza (Gallanza)", loopTimes: 21}, {name: "General Investigation: Maglielle (Maglielle)", loopTimes: 22}, {name: "Learning from the Past (Excavallion)", loopTimes: 23}, {name: "Saga illustrated: Inferno (Vulcan Bolla)", loopTimes: 24}, {name: "General Investigation: Id (Id)", loopTimes: 25}, {name: "Wings of Conflagration (Vrazarek Firewyrm)", loopTimes: 26}, {name: "Wings of Upheaval (Corvell Earthwyrm)", loopTimes: 27}, {name: "Wings of the Storm (Elusious Windwyrm)", loopTimes: 28}, {name: "Wings of Rime (Wilinus Icewyrm)", loopTimes: 29}, {name: "To Know the Unknowable (Angra Mainyu)", loopTimes: 30}, {name: "Rumble in the Desert (Quakadile)", loopTimes: 31}, {name: "Armor is Best Served Cold (Blizzadile)", loopTimes: 32}, {name: "A Heated Rivalry (Infernadile)", loopTimes: 33}, {name: "Death, Taxes and Goblins (Goblin Warrior)", loopTimes: 34}, {name: "Icy Eye on the Holy Prize (Nazarbonju)", loopTimes: 35}, {name: "Golemonology 103: Forest Golems (Rock Golem)", loopTimes: 36}, {name: "Hope in the Machine (Tayu'itar)", loopTimes: 37}, {name: "A New Breed (Griffin)", loopTimes: 38}, {name: "I See a Grim Vision (Gerasene)", loopTimes: 39}, {name: "Throw a Smith a Bone (Scarmiglione)", loopTimes: 40}, {name: "Revenge of the Hordes (Goblin Warrior x2)", loopTimes: 41}, {name: "Serenity Upon the Mount (Nazarbonju x2)", loopTimes: 42}, {name: "Roost and Regin (Griffin x2)", loopTimes: 43}, {name: "Boss Done Wants it Did (Rock Golem x2)", loopTimes: 44}, {name: "Know Your Enemy (Tayu'itar)", loopTimes: 45}, {name: "I See a Chromatic Vision (Multi Boss)", loopTimes: 46}, {name: "The Saga Continues: Wind (Furycane)", loopTimes: 47}, {name: "Saga illustrated: Crystal (Managarmr)", loopTimes: 48}, {name: "Id Bears Repeating (Id)", loopTimes: 49}, {name: "The Saga Continues: Silver (Gallanza)", loopTimes: 50}, {name: "Saga illustrated: Veil (Maglielle)", loopTimes: 51}, {name: "Saga illustrated: Veil (Maglielle)", loopTimes: 52}, {name: "The Saga Continues: Earth (Excavallion)", loopTimes: 53}, {name: "Saga illustraed: Hellfire (Vulcan Bolla)", loopTimes: 54}, {name: "Saga Grande: Happily Ever After (Angra Mainyu)", loopTimes: 55}]
 
 
-Gui, Add, Button, x10 y760 w70 h30 gLookHealthBar, START
+Gui, Add, Button, x10 y760 w70 h30 gStartDialogue, START
 
 Gui, Add, Button, x110 y760 w70 h30 gQuitScript, QUIT
 
 Gui, Add, Button, x210 y760 w70 h30 gOpenInputDialog, Input pixel colour offset
 
 Gui, Show, x%guiX% y39 w910 h800, Quest Selector
+
+Gui, Add, Checkbox, vMyCheckBox x310 y760, No Target, No Move Forward
+
+Gui, Add, Checkbox, vFirstSetup x510 y760, First Setup
+
 return
 
 ; Label for the button
@@ -172,10 +238,10 @@ OpenInputDialog:
     else
     {
         ; Set a variable with the user input
-        global userVariable := userInput + 5
+        global userVariable := 10 + userInput
 
         ; Display the input for demonstration purposes
-        pixelVariable := %userVariable% + 5
+        pixelVariable := 10 + %userVariable%
     }
 return
 
@@ -201,9 +267,21 @@ QuitScript:
 
 return
 
+StartDialogue:
+
+Msgbox, 4, Quest, % "You Selected: " buttonText " Proceed?"
+    ifMsgbox Yes
+    {
+        Goto LookHealthBar
+    }
+    else
+    {
+        return
+    }
 
 LookHealthBar:
 
+Gui, Submit
 Gui, Hide
 
 WinActivate, ahk_id %id%
@@ -211,16 +289,17 @@ CurioVariable := 0
 
 Loop
 {
+
     ToolTip, Searching For HealthBar and Countdown Timer, WinX + 50, WinY + 50
     Sleep, 1000
 
-    PixelSearch, FoundX1, FoundY1, BattleResultsX1, BattleResultsY1, BattleResultsX2, BattleResultsY2, 0xFFF99C, 5, Fast RGB
+    PixelSearch, FoundX1, FoundY1, BattleResultsX1, BattleResultsY1, BattleResultsX2, BattleResultsY2, %CountDownColorVariable%, 5, Fast RGB
         if (ErrorLevel = 0)
         {
             Sleep, 2000
             ;Double Check Countdown Timer
             ToolTip, Searching For Countdown Timer, WinX + 50, WinY + 50
-            PixelSearch, FoundX1, FoundY1, BattleResultsX1, BattleResultsY1, BattleResultsX2, BattleResultsY2, 0xFFF99C, 5, Fast RGB
+            PixelSearch, FoundX1, FoundY1, BattleResultsX1, BattleResultsY1, BattleResultsX2, BattleResultsY2, %CountDownColorVariable%, 5, Fast RGB
             if (ErrorLevel = 0)
                 {
                     Click Up
@@ -240,12 +319,13 @@ Loop
                     ToolTip, CountDown Timer Not Found Searching for HealthBar, WinX + 50, WinY + 50
                     for index, colour in HealthColours
                     {
-                        PixelSearch, FoundX1, FoundY1, HealthBarX1, HealthBarY1, HealthBarX2, HealthBarY2, %colour%, 10, Fast RGB
+                        PixelSearch, FoundX1, FoundY1, HealthBarX1, HealthBarY1, HealthBarX2, HealthBarY2, %colour%, 15, Fast RGB
                         if (ErrorLevel = 0)
                         {
                             ToolTip, Health Bar Found, WinX + 50, WinY + 50
                             Sleep, 1000
-
+                        if not (MyCheckBox)
+                        {
                             ; Target Monster
                             MouseMove, 73, 176
                             Click, Left, Down
@@ -261,6 +341,7 @@ Loop
                             MouseMove, 391, 606
                             Sleep, 2000
                         }
+                        }
                         else
                         {
                             ;Try Pressing L2 for Quick Navigation
@@ -269,7 +350,16 @@ Loop
                             Click, Left, Down
                             Sleep, 200
                             Click, Left, Up
-                            PixelSearch, MenuFoundX1, MenuFoundY1, MenuX1, MenuY1, MenuX2, MenuY2, 0x43C4DF, %pixelVariable%, Fast RGB
+                            if (FirstSetup)
+                            {
+                                MenuSetup = 0
+
+                                Gui, FirstMenuGui:Add, Text,, Click the centre of the diamond and press CTRL + R
+                                Gui, FirstMenuGui:Show,, FirstMenu
+                                Return
+                            }
+
+                            PixelSearch, MenuFoundX1, MenuFoundY1, MenuX1, MenuY1, MenuX2, MenuY2, %MenuColorVariable%, %pixelVariable%, Fast RGB
                             if (ErrorLevel = 0)
                                 {
                                     Goto FailSafe
@@ -285,6 +375,90 @@ Loop
 
 
 
+
+return
+
+^R::
+
+Gui, FirstMenuGui:Destroy
+Gui, FirstCountdownGui:Destroy
+Gui, FirstHealthGui:Destroy
+
+FirstSetup:
+MouseGetPos, posX, posY  ; Gets the current mouse position
+
+if (MenuSetup) = 0
+{
+    PixelGetColor, MenuColorVariable, posX, posY, RGB
+    MenuX1 := posX - 5
+    MenuY1 := posY -5
+    MenuX2 := posX + 5
+    MenuY2 := posY + 5
+    MenuSetup = 1
+    HealthBarSetup = 0
+Goto FailSafe
+}
+if (HealthBarSetup) = 0
+{
+
+    PixelGetColor, HealthColorVariable1, posX, posY, RGB
+    Sleep, 500
+    PixelGetColor, HealthColorVariable2, posX, posY, RGB
+    Sleep, 500
+    PixelGetColor, HealthColorVariable3, posX, posY, RGB
+
+    HealthColours := [HealthColorVariable1, HealthColorVariable2, HealthColorVariable3]
+
+    HealthBarX1 := posX - 5
+    HealthBarY1 := posY -5
+    HealthBarX2 := posX + 5
+    HealthBarY2 := posY + 5
+    HealthBarSetup = 1
+    CountDownSetup = 0
+    MsgBox, Wait for Countdown after battle before proceeding
+    Gui, FirstCountdownGui:Add, Text,, Click on Countdown timer (yellow part and near the end of the timer) then press CTRL + R
+    Gui, FirstCountdownGui:Show,, FirstCountdown
+    Return
+}
+
+if (CountDownSetup) = 0
+{
+    PixelGetColor, CountDownColorVariable, posX, posY, RGB
+    BattleResultsX1 := posX - 5
+    BattleResultsY1 := posY -5
+    BattleResultsX2 := posX + 5
+    BattleResultsY2 := posY + 5
+
+    CountDownSetup = 1
+    Msgbox, Wait for the battle results screen to end and your character to return to town before proceeding
+
+    filePath := A_ScriptDir . "\\settings.txt"
+
+    FileDelete, %filePath%
+
+    textToAppend := "MenuX1: " . MenuX1 . "`n"
+                . "MenuY1: " . MenuY1 . "`n"
+                . "MenuX2: " . MenuX2 . "`n"
+                . "MenuY2: " . MenuY2 . "`n"
+                . "MenuColorVariable: " . MenuColorVariable . "`n"
+                . "HealthColorVariable1: "  . HealthColorVariable1 . "`n"
+                . "HealthColorVariable2: "  . HealthColorVariable2 . "`n"
+                . "HealthColorVariable3: "  . HealthColorVariable3 . "`n"
+                . "HealthBarX1: " . HealthBarX1 . "`n"
+                . "HealthBarY1: " . HealthBarY1 . "`n"
+                . "HealthBarX1: " . HealthBarX2 . "`n"
+                . "HealthBarY1: " . HealthBarY2 . "`n"
+                . "CountDownColorVariable: " . CountDownColorVariable . "`n"
+                . "BattleResultsX1: " . BattleResultsX1 . "`n"
+                . "BattleResultsY1: " . BattleResultsY1 . "`n"
+                . "BattleResultsX2: " . BattleResultsX2 . "`n"
+                . "BattleResultsY2: " . BattleResultsY2 . "`n"
+
+    FileAppend, %textToAppend%, %filePath%
+    Msgbox, Saving New Settings, Have Fun :)
+}
+
+Reload
 
 return
 
@@ -361,7 +535,7 @@ BattleResults:
                 {
                     for index, colour in HealthColours
                     {
-                        PixelSearch, FoundX1, FoundY1, HealthBarX1, HealthBarY1, HealthBarX2, HealthBarY2, %colour%, 10, Fast RGB
+                        PixelSearch, FoundX1, FoundY1, HealthBarX1, HealthBarY1, HealthBarX2, HealthBarY2, %colour%, 15, Fast RGB
                         if (ErrorLevel = 0)
                         {
                             ToolTip, Health Bar Found, WinX + 50, WinY + 50
@@ -465,9 +639,20 @@ FailSafe:
 
             Loop
             {
+                if (FirstSetup)
+                {
+                    MsgBox, Wait For Battle to Start Before proceeding
+                }
+                if (HealthBarSetup) = 0
+                {
+
+                                Gui, FirstHealthGui:Add, Text,, Click on a visible part of the HealthBar and press CTRL + R
+                                Gui, FirstHealthGui:Show,, FirstHealth
+                                Return
+                }
                     for index, colour in HealthColours
                     {
-                        PixelSearch, FoundX1, FoundY1, HealthBarX1, HealthBarY1, HealthBarX2, HealthBarY2, %colour%, 10, Fast RGB
+                        PixelSearch, FoundX1, FoundY1, HealthBarX1, HealthBarY1, HealthBarX2, HealthBarY2, %colour%, 15, Fast RGB
                         if (ErrorLevel = 0)
                         {
                             ToolTip, Health Bar Found, WinX + 50, WinY + 50
@@ -476,7 +661,7 @@ FailSafe:
                         }
                         else
                         {
-                        PixelSearch, MenuFoundX1, MenuFoundY1, MenuX1, MenuY1, MenuX2, MenuY2, 0x52595A, 3, Fast RGB
+                        PixelSearch, MenuFoundX1, MenuFoundY1, MenuX1, MenuY1, MenuX2, MenuY2, 0x52595A, 5, Fast RGB
                         if (ErrorLevel = 0)
                             {
                                 Goto FailSafe
