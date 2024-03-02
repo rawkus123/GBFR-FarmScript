@@ -23,6 +23,11 @@ This script was made to be used with any character with the intention of Full As
 - Grab the newest release
 - Place the file anywhere you'd like on your computer and run the exe.
 - To setup the boss loop some manual setup is required. Just run over to the quest counter and change the Sort selection to "By Type", goto Boss, select any quest, accept it and then abandon it.
+- Make sure auto skip on loading scene is enabled.
+
+## First Setup
+- If the script isnt passing the first loop and first setup maybe required.
+- Check the first setup option on the main menu and follow the proceeding steps.
 
 You don't need to have AHK installed if you use this script like this. Should work on any Windows machine.
 
@@ -43,4 +48,4 @@ Click the image below to be redirected to an example of this working on YouTube.
 I've run this script for 6 hours on Wings of Antiquity (Ancient Dragon). My team can kill this boss in 15 secs, so doing the maths the full loop including boss time,loading times and battle results is roughly 2 mins so thats 30 boss fights
 in the hour, with this setup its netted me on Average 110 Curios. There doesnt seem to be a solid method on Grinding Curio's as far as I know and it comes down to RNG in both drops and rewards. So Good Luck.
 
-## If the script can't start the 'quest start loop', set your monitor's resolution to 1080 and play with the 'Pixel Variable' at the main menu. Start with 1 and go up from there using trial and error.
+## If the script can't start the 'quest start loop', set your monitor's resolution to 1080, check the First Setup check box on the main menu and follow the steps.
