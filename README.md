@@ -17,7 +17,7 @@ This script was made to be used with any character with the intention of Full As
 - Auto Repeats quest when dialogue is present.
 - FailSafe in case character is thrown out of Loop it will attempt to go back to quest counter and repeat quest.
 - Any Resolution should work now with the First Setup option
-- (Future Release) Have toggle to turn off Boss targeting and moving forward.
+- Toggle to turn off Boss targeting and moving forward.
 - (Future Release) Gui to track Curio collection
 
 ## Setup
