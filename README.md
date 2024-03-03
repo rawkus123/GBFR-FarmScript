@@ -23,6 +23,7 @@ This script was made to be used with any character with the intention of Full As
 ## Setup
 - Grab the newest release
 - Place the file anywhere you'd like on your computer and run the exe.
+- Set Nox's resolution under settings to Tablet Mode 1600x900.
 - To setup the boss loop some manual setup is required. Just run over to the quest counter and change the Sort selection to "By Type", goto Boss, select any quest, accept it and then abandon it.
 - Make sure auto skip on loading scene is enabled.
 - Techically the script should work out of the box. But if needed (maybe due to resolution differences or pixel variances) check the First Setup checkbox on main menu and follow the steps.
